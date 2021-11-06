@@ -1,9 +1,9 @@
-// query selector variables go here 👇
+// Query Selectors
 var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title');
 var mainPosterQuote = document.querySelector('.poster-quote');
 
-// Buttons
+// *Buttons
 var savePosterButton = document.querySelector('.save-poster');
 var savedPostersButton = document.querySelector('.show-saved');
 var showRandomButton = document.querySelector('.show-random');
@@ -12,17 +12,18 @@ var backToMainButton = document.querySelector('.back-to-main');
 var showMainButton = document.querySelector('.show-main');
 var makePosterButton = document.querySelector('.make-poster');
 
-// Sections
+// *Sections
 var posterForm = document.querySelector('.poster-form');
 var mainPosterArea = document.querySelector('.main-poster');
 var savedPostersArea = document.querySelector('.saved-posters');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
+// *Form Elements
 var inputImageURL = document.getElementById('poster-image-url');
 var inputTitle = document.getElementById('poster-title');
 var inputQuote = document.getElementById('poster-quote');
 
-// we've provided you with some data to work with 👇
+// Data
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -123,7 +124,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// Event Listeners
 window.addEventListener('load', changePoster);
 savePosterButton.addEventListener('click', savePoster);
 savedPostersButton.addEventListener('click', showSavedPosters);
@@ -133,7 +134,7 @@ backToMainButton.addEventListener('click', showMainPoster);
 showMainButton.addEventListener('click', showMainPoster);
 makePosterButton.addEventListener('click', makePoster);
 
-// functions and event handlers go here 👇
+// Functions and Event Handlers
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
