@@ -3,6 +3,8 @@ var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title');
 var mainPosterQuote = document.querySelector('.poster-quote');
 
+// Buttons
+var savePosterButton = document.querySelector('.save-poster');
 var savedPostersButton = document.querySelector('.show-saved');
 var showRandomButton = document.querySelector('.show-random');
 var createPosterButton = document.querySelector('.show-form');
@@ -10,9 +12,11 @@ var backToMainButton = document.querySelector('.back-to-main');
 var showMainButton = document.querySelector('.show-main');
 var makePosterButton = document.querySelector('.make-poster');
 
+// Sections
 var posterForm = document.querySelector('.poster-form');
 var mainPosterArea = document.querySelector('.main-poster');
 var savedPostersArea = document.querySelector('.saved-posters');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 var inputImageURL = document.getElementById('poster-image-url');
 var inputTitle = document.getElementById('poster-title');
@@ -121,6 +125,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', changePoster);
+savePosterButton.addEventListener('click', savePoster);
 savedPostersButton.addEventListener('click', showSavedPosters);
 showRandomButton.addEventListener('click', changePoster);
 createPosterButton.addEventListener('click', showForm);
@@ -143,6 +148,19 @@ function changePoster() {
   mainPosterQuote.innerText = newQuote;
 
   currentPoster = new Poster(newImage, newTitle, newQuote);
+}
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+
+  savedPostersGrid.innerHTML +=
+    `<section class="mini-poster" id="${savedPosters.length}">
+      <img src=${currentPoster.imageURL}>
+      <h2>${currentPoster.title}</h2>
+      <h4>${currentPoster.quote}</h2>
+    </section>`;
 }
 
 function showSavedPosters() {
