@@ -6,6 +6,8 @@ var posterQuote = document.querySelector('.poster-quote');
 var savedPostersButton = document.querySelector('.show-saved');
 var showRandomButton = document.querySelector('.show-random');
 var createPosterButton = document.querySelector('.show-form');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMainButton = document.querySelector('.show-main');
 
 var posterForm = document.querySelector('.poster-form');
 var mainPosterArea = document.querySelector('.main-poster');
@@ -117,6 +119,8 @@ window.addEventListener('load', changePoster);
 savedPostersButton.addEventListener('click', showSavedPosters);
 showRandomButton.addEventListener('click', changePoster);
 createPosterButton.addEventListener('click', showForm);
+backToMainButton.addEventListener('click', showMainPoster);
+showMainButton.addEventListener('click', showMainPoster);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -141,4 +145,13 @@ function showSavedPosters() {
 function showForm() {
   posterForm.classList.remove('hidden');
   mainPosterArea.classList.add('hidden');
+}
+
+function showMainPoster() {
+  var savedPostersClasses = savedPostersArea.classList;
+  var posterFormClasses = posterForm.classList;
+
+  mainPosterArea.classList.remove('hidden');
+  savedPostersArea.classList.add('hidden');
+  posterForm.classList.add('hidden');
 }
