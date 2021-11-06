@@ -2,10 +2,14 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+
+var savedPostersButton = document.querySelector('.show-saved');
 var showRandomButton = document.querySelector('.show-random');
 var createPosterButton = document.querySelector('.show-form');
+
 var posterForm = document.querySelector('.poster-form');
-var mainPoster = document.querySelector('.main-poster');
+var mainPosterArea = document.querySelector('.main-poster');
+var savedPostersArea = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,6 +114,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', changePoster);
+savedPostersButton.addEventListener('click', showSavedPosters);
 showRandomButton.addEventListener('click', changePoster);
 createPosterButton.addEventListener('click', showForm);
 
@@ -128,7 +133,12 @@ function changePoster() {
   posterQuote.innerText = newQuote;
 }
 
+function showSavedPosters() {
+  savedPostersArea.classList.remove('hidden');
+  mainPosterArea.classList.add('hidden');
+}
+
 function showForm() {
   posterForm.classList.remove('hidden');
-  mainPoster.classList.add('hidden');
+  mainPosterArea.classList.add('hidden');
 }
