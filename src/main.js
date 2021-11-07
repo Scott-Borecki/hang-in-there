@@ -126,6 +126,7 @@ var currentPoster;
 
 // Event Listeners
 window.addEventListener('load', changePoster);
+
 savePosterButton.addEventListener('click', savePoster);
 savedPostersButton.addEventListener('click', showSavedPosters);
 showRandomButton.addEventListener('click', changePoster);
@@ -133,6 +134,10 @@ createPosterButton.addEventListener('click', showForm);
 backToMainButton.addEventListener('click', showMainPoster);
 showMainButton.addEventListener('click', showMainPoster);
 makePosterButton.addEventListener('click', makePoster);
+
+savedPostersArea.addEventListener('dblclick', function(event) {
+  removePoster(event);
+});
 
 // Functions and Event Handlers
 function getRandomIndex(array) {
@@ -157,7 +162,7 @@ function savePoster() {
   }
 
   savedPostersGrid.innerHTML +=
-    `<section class="mini-poster" id="${savedPosters.length}">
+    `<section class="mini-poster" id="${currentPoster.id}">
       <img src=${currentPoster.imageURL}>
       <h2>${currentPoster.title}</h2>
       <h4>${currentPoster.quote}</h2>
@@ -201,4 +206,15 @@ function makePoster() {
   mainPosterQuote.innerText = newQuote;
 
   showMainPoster();
+}
+
+function removePoster(event) {
+  var miniPoster = event.target.closest('section.mini-poster');
+  var miniPosterId = miniPoster.getAttribute('id');
+
+  for (var i = 0; i < savedPosters.length; ++i) {
+    if (savedPosters[i].id == miniPosterId) savedPosters.splice(i, 1);
+  }
+
+  miniPoster.remove();
 }
